@@ -7,14 +7,14 @@ import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <div className="relative min-h-screen w-full overflow-hidden">
+    <div className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
       {/* Animated Background Paths */}
       <div className="absolute inset-0 z-0">
         <BackgroundPaths />
       </div>
 
       {/* Content Layer */}
-      <div className="relative z-10 flex min-h-screen flex-col items-center justify-center px-4">
+      <div className="relative z-10 flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center px-4">
         {/* Hero Section */}
         <div className="max-w-5xl text-center space-y-8">
           {/* Animated Title */}
