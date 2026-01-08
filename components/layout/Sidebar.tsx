@@ -91,17 +91,17 @@ export function Sidebar() {
   return (
     <aside
       className={cn(
-        "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] border-r border-sidebar-border bg-sidebar transition-all duration-300 hidden lg:block",
-        isCollapsed ? "w-16" : "w-72"
+        "fixed left-0 top-16 z-40 h-[calc(100vh-4rem)] border-r border-border bg-background transition-all duration-300 hidden lg:block",
+        isCollapsed ? "w-14" : "w-56"
       )}
     >
       {/* Collapse Toggle */}
-      <div className="flex h-14 items-center justify-end px-4 border-b border-sidebar-border">
+      <div className="flex h-12 items-center justify-end px-3 border-b border-border">
         <Button
           variant="ghost"
           size="icon"
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="h-8 w-8"
+          className="h-7 w-7"
         >
           {isCollapsed ? (
             <PanelLeft className="h-4 w-4" />
@@ -112,7 +112,7 @@ export function Sidebar() {
       </div>
 
       {/* Navigation */}
-      <div className="overflow-y-auto h-[calc(100vh-8rem)] py-4">
+      <div className="overflow-y-auto h-[calc(100vh-7rem)] py-3">
         <div className="space-y-1 px-2">
           {navigation.map((section) => (
             <div key={section.title}>
@@ -122,21 +122,21 @@ export function Sidebar() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "w-full justify-start gap-2 px-3 py-2",
-                      isCollapsed && "justify-center px-2"
+                      "w-full justify-start gap-2 px-2 py-1.5 h-auto font-normal hover:bg-muted",
+                      isCollapsed && "justify-center px-1"
                     )}
                     onClick={() => !isCollapsed && toggleSection(section.title)}
                   >
-                    <section.icon className="h-4 w-4 shrink-0" />
+                    <section.icon className="h-4 w-4 shrink-0 text-muted-foreground" />
                     {!isCollapsed && (
                       <>
-                        <span className="flex-1 text-left text-sm font-medium">
+                        <span className="flex-1 text-left text-xs font-medium text-foreground">
                           {section.title}
                         </span>
                         {openSections.includes(section.title) ? (
-                          <ChevronDown className="h-4 w-4" />
+                          <ChevronDown className="h-3 w-3 text-muted-foreground" />
                         ) : (
-                          <ChevronRight className="h-4 w-4" />
+                          <ChevronRight className="h-3 w-3 text-muted-foreground" />
                         )}
                       </>
                     )}
@@ -144,16 +144,16 @@ export function Sidebar() {
 
                   {/* Sub-items */}
                   {!isCollapsed && openSections.includes(section.title) && (
-                    <div className="ml-6 space-y-1 border-l border-sidebar-border pl-3 mt-1">
+                    <div className="ml-5 space-y-0.5 border-l border-border pl-2 mt-0.5 mb-1">
                       {section.items.map((item) => (
                         <Link key={item.href} href={item.href}>
                           <Button
                             variant="ghost"
                             className={cn(
-                              "w-full justify-start text-sm",
+                              "w-full justify-start text-xs h-auto py-1 px-2 font-normal",
                               pathname === item.href
-                                ? "bg-sidebar-accent text-sidebar-accent-foreground"
-                                : "text-muted-foreground hover:text-foreground hover:bg-sidebar-accent"
+                                ? "bg-muted text-foreground font-medium"
+                                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
                             )}
                           >
                             {item.title}
@@ -169,14 +169,14 @@ export function Sidebar() {
                   <Button
                     variant="ghost"
                     className={cn(
-                      "w-full justify-start gap-2 px-3 py-2",
-                      isCollapsed && "justify-center px-2",
-                      pathname === section.href && "bg-sidebar-accent"
+                      "w-full justify-start gap-2 px-2 py-1.5 h-auto font-normal hover:bg-muted",
+                      isCollapsed && "justify-center px-1",
+                      pathname === section.href && "bg-muted text-foreground"
                     )}
                   >
-                    <section.icon className="h-4 w-4 shrink-0" />
+                    <section.icon className="h-4 w-4 shrink-0 text-muted-foreground" />
                     {!isCollapsed && (
-                      <span className="text-sm font-medium">{section.title}</span>
+                      <span className="text-xs font-medium text-foreground">{section.title}</span>
                     )}
                   </Button>
                 </Link>

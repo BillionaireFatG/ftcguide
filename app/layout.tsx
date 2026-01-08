@@ -45,7 +45,7 @@ export default function RootLayout({
             <Navbar />
             <div className="flex">
               <Sidebar />
-              <main className="flex-1 lg:ml-72">
+              <main className="flex-1 lg:ml-56">
                 {children}
               </main>
             </div>
