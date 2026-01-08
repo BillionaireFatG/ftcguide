@@ -7,7 +7,7 @@ import Link from "next/link";
 
 export default function LandingPage() {
   return (
-    <div className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden -mx-4 sm:-mx-6 lg:-mx-8">
+    <div className="relative min-h-[calc(100vh-4rem)] w-full overflow-hidden">
       {/* Animated Background Paths */}
       <div className="absolute inset-0 z-0">
         <BackgroundPaths />

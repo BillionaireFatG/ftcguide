@@ -1,10 +1,20 @@
+"use client";
+
 import Link from "next/link";
+import { useSidebar } from "./SidebarContext";
+import { cn } from "@/lib/utils";
 
 export function Footer() {
   const currentYear = new Date().getFullYear();
+  const { isCollapsed } = useSidebar();
 
   return (
-    <footer className="border-t border-border bg-background lg:ml-52 transition-all duration-300">
+    <footer
+      className={cn(
+        "border-t border-border bg-background transition-all duration-300",
+        isCollapsed ? "lg:ml-12" : "lg:ml-52"
+      )}
+    >
       <div className="container mx-auto px-6 py-8">
         <div className="grid grid-cols-2 gap-8 md:grid-cols-4">
           {/* About */}

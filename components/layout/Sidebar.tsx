@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import { 
   ChevronRight, 
@@ -18,6 +17,8 @@ import {
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
+import { useSidebar } from "./SidebarContext";
+import { useState } from "react";
 
 const navigation = [
   {
@@ -76,11 +77,11 @@ const navigation = [
 ];
 
 export function Sidebar() {
-  const [isCollapsed, setIsCollapsed] = useState(false);
+  const { isCollapsed, setIsCollapsed } = useSidebar();
   const [openSections, setOpenSections] = useState(["Drivetrains"]);
   const pathname = usePathname();
 
-  const toggleSection = (title) => {
+  const toggleSection = (title: string) => {
     setOpenSections((prev) =>
       prev.includes(title)
         ? prev.filter((t) => t !== title)
@@ -165,7 +166,7 @@ export function Sidebar() {
                 </div>
               ) : (
                 // Single link
-                <Link href={section.href}>
+                <Link href={section.href || "#"}>
                   <Button
                     variant="ghost"
                     className={cn(
